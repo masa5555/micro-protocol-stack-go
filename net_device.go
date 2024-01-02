@@ -11,9 +11,11 @@ const IFNAMSIZ = 16
 // max length of mac address
 const NET_DEVICE_ADDR_LEN = 6
 
-const NET_DEVICE_TYPE_NULL uint16 = 0
+const NET_DEVICE_TYPE_NULL uint16 = 0x0001
+const NET_DEVICE_TYPE_LOOPBACK uint16 = 0x0010
 
 const NET_DEVICE_FLAG_UP uint16 = 0x0001
+const NET_DEVICE_FLAG_LOOPBACK uint16 = 0x0010
 
 type NetDevice struct {
 	Next  *NetDevice

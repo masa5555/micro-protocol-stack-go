@@ -99,3 +99,9 @@ func (dev *NetDevice) NetDeviceOutput(data *[]byte, len uint16, dst func()) erro
 	}
 	return nil
 }
+
+func (dev *NetDevice) NetInputHandler(typ uint16, data *[]byte, len uint16, dst func()) error {
+	slog.Info("InputHandler", "NetDevice=", dev.DebugNetDevice())
+	slog.Info(hexdump.Dump(*data))
+	return nil
+}

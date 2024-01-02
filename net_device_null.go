@@ -10,10 +10,6 @@ import (
 
 const NULL_MTU = math.MaxInt16
 
-type NullDevice struct {
-	NetDevice
-}
-
 func InitNullDevice(index uint) (dev *NetDevice, err error) {
 	dev = &NetDevice{
 		Index: index,
@@ -25,7 +21,7 @@ func InitNullDevice(index uint) (dev *NetDevice, err error) {
 		Ops: NetDeviceOps{
 			nil,
 			nil,
-			Transmit,
+			NullDeviceTransmit,
 			nil,
 		},
 	}
@@ -34,8 +30,8 @@ func InitNullDevice(index uint) (dev *NetDevice, err error) {
 	return dev, nil
 }
 
-func Transmit(dev *NetDevice, typ uint16, data *[]byte, len uint16, dst func()) error {
-	slog.Info("Transmit", "NetDevice=", dev.DebugNetDevice())
+func NullDeviceTransmit(dev *NetDevice, typ uint16, data *[]byte, len uint16, dst func()) error {
+	slog.Info("NullDeviceTransmit", "NetDevice=", dev.DebugNetDevice())
 	slog.Info(hexdump.Dump(*data))
 	/* drop data */
 	return nil

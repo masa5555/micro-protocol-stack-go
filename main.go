@@ -23,10 +23,10 @@ var test_data = []byte{
 
 func main() {
 	var devices *NetDevice
-	// nullデバイスの初期化
+
 	var i uint = 0
-	for i < 6 {
-		dev, err := InitNullDevice(i)
+	for i < 2 {
+		dev, err := InitLoopbackDevice(i)
 		if err != nil {
 			panic(err)
 		}
